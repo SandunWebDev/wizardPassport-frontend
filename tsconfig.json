@@ -1,0 +1,30 @@
+{
+	"include": ["src"],
+
+	"watchOptions": {
+		"excludeDirectories": []
+	},
+
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+
+		"module": "esnext",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"checkJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"noEmit": true,
+		"noEmitOnError": true,
+
+		"strict": true
+	}
+}
