@@ -18,7 +18,8 @@
 		"lint-stylelint-fix": "stylelint **/*.{css,scss,sass,less} --fix",
 		"lint-all": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
 		"lint-all-fix": "npm run lint-prettier-fix && npm run lint-eslint-fix && npm run lint-stylelint-fix",
-		"full-code-quality-check": "npm run lint-all && npm run test-ci",
+		"manual-tscheck": "tsc -p ./tsconfig.json",
+		"full-code-quality-check": "npm run lint-all && npm run manual-tscheck && npm run test-ci",
 		"prepare": "husky install"
 	},
 	"jest": {

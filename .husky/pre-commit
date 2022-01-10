@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-lint-staged --concurrent false
+npx --no-install lint-staged --concurrent false # Linting & Type Checking Staged Files.
+npm run manual-tscheck # Manually Type Checking whole Project.
+npm run test-ci # Run Tests.
