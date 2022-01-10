@@ -4,15 +4,35 @@
 	"private": false,
 	"scripts": {
 		"start": "react-scripts start",
+		"start-craco": "craco start",
 		"build": "react-scripts build",
+		"eject": "react-scripts eject",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"test-coverage": "react-scripts test --coverage",
+		"test-ci": "react-scripts test --coverage --watchAll=false",
+		"lint-prettier": "prettier --check .",
+		"lint-prettier-fix": "prettier --write .",
+		"lint-eslint": "eslint . --quiet ",
+		"lint-eslint-fix": "eslint . --fix --quiet",
+		"lint-stylelint": "stylelint **/*.{css,scss,sass,less}",
+		"lint-stylelint-fix": "stylelint **/*.{css,scss,sass,less} --fix",
+		"lint-all": "npm run lint-prettier && npm run lint-eslint && npm run lint-stylelint",
+		"lint-all-fix": "npm run lint-prettier-fix && npm run lint-eslint-fix && npm run lint-stylelint-fix",
+		"full-code-quality-check": "npm run lint-all && npm run test-ci",
+		"prepare": "husky install"
 	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx}"
+		],
+		"coverageThreshold": {
+			"global": {
+				"branches": 0,
+				"functions": 0,
+				"lines": 0,
+				"statements": -1000
+			}
+		}
 	},
 	"browserslist": {
 		"production": [
@@ -39,5 +59,31 @@
 		"react-scripts": "5.0.0",
 		"typescript": "^4.5.4",
 		"web-vitals": "^2.1.2"
+	},
+	"devDependencies": {
+		"@craco/craco": "^6.4.3",
+		"@typescript-eslint/eslint-plugin": "^5.9.0",
+		"@typescript-eslint/parser": "^5.9.0",
+		"eslint": "^8.6.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-airbnb-typescript": "^16.1.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-json": "^3.1.0",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-promise": "^6.0.0",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"eslint-plugin-react-redux": "^3.3.4",
+		"eslint-plugin-sonarjs": "^0.11.0",
+		"eslint-plugin-unicorn": "^40.0.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.1.7",
+		"prettier": "^2.5.1",
+		"stylelint": "^14.2.0",
+		"stylelint-config-prettier": "^9.0.3",
+		"stylelint-config-standard": "^24.0.0",
+		"stylelint-order": "^5.0.0"
 	}
 }
