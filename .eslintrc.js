@@ -30,7 +30,7 @@ module.exports = {
 		log: 'writable', // This is the "logger" defined in "utilities/logger.js"
 	},
 
-	plugins: ['react-redux', 'json', '@typescript-eslint'],
+	plugins: ['react-redux', 'json', '@typescript-eslint', 'unused-imports'],
 
 	extends: [
 		'eslint:recommended',
@@ -77,8 +77,6 @@ module.exports = {
 
 		'promise/always-return': 'warn',
 
-		'import/prefer-default-export': 'off',
-
 		'unicorn/no-null': 'off',
 		'unicorn/prevent-abbreviations': 'off',
 		'unicorn/filename-case': 'off',
@@ -87,6 +85,7 @@ module.exports = {
 		'sonarjs/no-duplicate-string': 'off',
 		'sonarjs/no-small-switch': 'off',
 
+		'import/prefer-default-export': 'off',
 		'import/order': [
 			'error',
 			{
@@ -98,14 +97,28 @@ module.exports = {
 					'sibling',
 					'index',
 					'object',
+					'type',
+					'unknown',
 				],
 				'newlines-between': 'always',
 				alphabetize: {
 					order: 'asc',
 					caseInsensitive: true,
 				},
+				pathGroups: [
+					// Making React imports are at First regardless of the order.
+					{
+						pattern: 'react',
+						group: 'external',
+						position: 'before',
+					},
+				],
+				pathGroupsExcludedImportTypes: ['react'],
 			},
 		],
+		'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+		'unused-imports/no-unused-imports': 'error',
+
 		'sort-vars': ['warn'],
 		'json/*': ['error', { allowComments: true }], // Ability to lint JSON. (NOT Reliable)
 	},

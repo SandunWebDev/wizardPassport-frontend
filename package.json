@@ -9,7 +9,7 @@
 		"eject": "react-scripts eject",
 		"test": "react-scripts test",
 		"test-coverage": "react-scripts test --coverage",
-		"test-ci": "react-scripts test --coverage --watchAll=false",
+		"test-ci": "react-scripts test --coverage --watchAll=false --passWithNoTests",
 		"lint-prettier": "prettier --check .",
 		"lint-prettier-fix": "prettier --write .",
 		"lint-eslint": "eslint . --quiet ",
