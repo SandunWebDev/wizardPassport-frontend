@@ -1,32 +1,34 @@
-import {
-	ChakraProvider,
-	ColorModeScript,
-	ConfigColorMode,
-} from '@chakra-ui/react';
 import React from 'react';
 
-import chakraCustomTheme from '../../../configs/chakraThemeConfig';
-import HomePage from '../../HomePage/HomePage';
+import { Progress, Box } from '@chakra-ui/react';
+import { Outlet, useRouter } from 'react-location';
+import { ReactLocationDevtools } from 'react-location-devtools';
+
+import Header from '../../../components/Header/Header';
 
 import './App.css';
 
 function App() {
-	return (
-		<React.StrictMode>
-			{/* Initializing Chakra Light/Dark Mode */}
-			<ColorModeScript
-				initialColorMode={
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-member-access
-					chakraCustomTheme.config!.initialColorMode as ConfigColorMode
-				}
-			/>
+	const router = useRouter();
 
-			<ChakraProvider theme={chakraCustomTheme}>
-				<div className='App'>
-					<HomePage />
-				</div>
-			</ChakraProvider>
-		</React.StrictMode>
+	return (
+		<div className='App'>
+			{/* Just showing some navigation indicator when route with asynchronous loading is happening.
+			    But, If it take longer than "defaultPendingMs/pendingMs" value, Then what defined in "defaultPendingElement/pendingElement" will be shown.  */}
+			{router.pending ? (
+				<Box top='0' position='absolute' width='100%'>
+					<Progress size='sm' bg='none' isIndeterminate />
+				</Box>
+			) : null}
+
+			<Header />
+
+			{/*	Below component will render "Matching route path's element, If applicable"	*/}
+			<Outlet />
+
+			{/*	Below component will render "ReactLocation Developer Tools", Only in Development Mode */}
+			<ReactLocationDevtools initialIsOpen={false} />
+		</div>
 	);
 }
 
