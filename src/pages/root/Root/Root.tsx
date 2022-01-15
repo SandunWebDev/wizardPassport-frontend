@@ -11,6 +11,7 @@ import { rankRoutes } from 'react-location-rank-routes';
 
 import ErrorPage500ForReactLocation from '../../../components/errorHandling/customErrorStatusPages/ErrorPage500ForReactLocation';
 import PageLevelErrorBoundary from '../../../components/errorHandling/errorBoundaries/PageLevelErrorBoundary/PageLevelErrorBoundary';
+import { ConfiguredReactHotToasterProvider } from '../../../components/toasters/Toaster/Toaster';
 import chakraCustomTheme from '../../../configs/chakraThemeConfig';
 import { mainRoutes } from '../../../routes/mainRoutes';
 import { routerHistory } from '../../../routes/routerHistory';
@@ -39,6 +40,8 @@ function Root() {
 			/>
 
 			<ChakraProvider theme={chakraCustomTheme}>
+				<ConfiguredReactHotToasterProvider />
+
 				<Router
 					location={reactLocation}
 					routes={mainRoutes}

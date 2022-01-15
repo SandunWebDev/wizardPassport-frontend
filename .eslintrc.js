@@ -118,7 +118,7 @@ module.exports = {
 			},
 		],
 		'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-		'unused-imports/no-unused-imports': 'error',
+		'unused-imports/no-unused-imports': 'off', // Currently disabled automatically removing unused imports, Because it's annoying when developing.
 
 		'sort-vars': ['warn'],
 		'json/*': ['error', { allowComments: true }], // Ability to lint JSON. (NOT Reliable)
