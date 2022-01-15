@@ -16,7 +16,7 @@ type TemplateTypesWithTheirPropTypes = {
 };
 
 // Possible template types. Like "base, default, ..."
-type TemplateTypes = keyof TemplateTypesWithTheirPropTypes;
+export type TemplateTypes = keyof TemplateTypesWithTheirPropTypes;
 
 // Helper utility to get individual template type and its corresponding prop types.
 export interface GetTemplateTypeAndPropTypes<T extends TemplateTypes> {

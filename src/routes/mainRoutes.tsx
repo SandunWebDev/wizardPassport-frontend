@@ -4,8 +4,8 @@ import axios from 'axios';
 import { DefaultGenerics, Navigate, Route } from 'react-location';
 import wait from 'waait';
 
+import ErrorPage404 from '../components/errorHandling/customErrorStatusPages/ErrorPage404';
 import globalValues from '../configs/globalValues';
-import ErrorPage404 from '../pages/customStatusPages/ErrorPage404';
 import DevOnlyPage from '../pages/DevOnlyPage/DevOnlyPage';
 import HomePage from '../pages/HomePage/HomePage';
 
@@ -133,7 +133,7 @@ if (isDevelopment) {
 				pendingElement: async () => <div>Loading Characters</div>,
 				pendingMs: 1000 * 2, // Default time wait until pending element is shown.
 				pendingMinMs: 500, // If it's shown, ensure the pending element is rendered for at least 500ms (Mostly to avoid flickers, when resolved very quickly)
-				errorElement: 'Error Occurred while Fetching Characters',
+				// errorElement: 'Error Occurred while Fetching Characters',
 				loaderMaxAge: 1000 * 5, // How long fetch data should be cached.
 
 				meta: {

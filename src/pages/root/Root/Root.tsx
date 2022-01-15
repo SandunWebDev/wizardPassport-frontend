@@ -9,10 +9,11 @@ import { ReactLocation, Router } from 'react-location';
 import { parseSearch, stringifySearch } from 'react-location-jsurl';
 import { rankRoutes } from 'react-location-rank-routes';
 
+import ErrorPage500ForReactLocation from '../../../components/errorHandling/customErrorStatusPages/ErrorPage500ForReactLocation';
+import PageLevelErrorBoundary from '../../../components/errorHandling/errorBoundaries/PageLevelErrorBoundary/PageLevelErrorBoundary';
 import chakraCustomTheme from '../../../configs/chakraThemeConfig';
 import { mainRoutes } from '../../../routes/mainRoutes';
 import { routerHistory } from '../../../routes/routerHistory';
-import ErrorPage500 from '../../customStatusPages/ErrorPage500';
 import PageLoader from '../../customStatusPages/PageLoader';
 import App from '../App/App';
 
@@ -50,8 +51,10 @@ function Root() {
 					defaultPendingElement={<PageLoader />}
 					defaultPendingMs={1000 * 5} // Default time wait until pending element is shown.
 					defaultPendingMinMs={500} // If it's shown, ensure the pending element is rendered for at least 500ms (Mostly to avoid flickers, when resolved very quickly)
-					defaultErrorElement={<ErrorPage500 />}>
-					<App />
+					defaultErrorElement={<ErrorPage500ForReactLocation />}>
+					<PageLevelErrorBoundary>
+						<App />
+					</PageLevelErrorBoundary>
 				</Router>
 			</ChakraProvider>
 		</React.StrictMode>

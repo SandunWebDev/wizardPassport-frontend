@@ -74,6 +74,7 @@ module.exports = {
 		'react/prefer-stateless-function': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'react-redux/prefer-separate-component-file': 'off',
+		'react/require-default-props': 'off',
 
 		'promise/always-return': 'warn',
 
