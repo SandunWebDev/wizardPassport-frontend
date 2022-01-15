@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button } from '@chakra-ui/react';
+import log from 'loglevel';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 
 import ErrorPage500 from '../../customErrorStatusPages/ErrorPage500';
@@ -38,12 +39,16 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 
 const myErrorHandler = (error: Error, info: { componentStack: string }) => {
 	// Do something with the error. (	Ex: Log to an error logging client.)
-	console.log('ERROR CACHED IN ERROR BOUNDARY : \n', error.message, info);
+	log.error('ERROR CACHED IN ERROR BOUNDARY : \n', error.message, info);
 };
 
 type MainErrorBoundaryProps = {
 	children: React.ReactNode;
 };
+
+// SIDE-NOTE : Normally vanilla react 'ErrorBoundary' don't catch some errors. (Like errors in Event Listeners, Asynchronous Code, Etc.. )
+//             But using this package(react-error-boundary) and its "useErrorHandler()" Hook we can catch them too.
+//             See "https://github.com/bvaughn/react-error-boundary#useerrorhandlererror-unknown" for more info.
 
 export default function MainErrorBoundary({
 	children,

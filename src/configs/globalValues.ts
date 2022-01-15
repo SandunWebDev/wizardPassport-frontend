@@ -1,3 +1,5 @@
+import log from 'loglevel';
+
 const { NODE_ENV } = process.env;
 
 const globalValues = {
@@ -24,7 +26,7 @@ function checkAllCriticalEnvValuesAvailable() {
 	);
 
 	if (!isAllCriticalEnvValuesAvailable) {
-		console.error('NOTE : SOME CRITICAL ENV VALUES ARE MISSING');
+		log.error('NOTE : SOME CRITICAL ENV VALUES ARE MISSING');
 	}
 }
 checkAllCriticalEnvValuesAvailable();
