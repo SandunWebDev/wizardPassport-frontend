@@ -1,10 +1,31 @@
 import React from 'react';
 
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import shallow from 'zustand/shallow';
 
 import { toast } from '../../components/toasters/Toaster/Toaster';
+import { useStore } from '../../globalStore/globalStore';
 
 export default function HomePage() {
+	const {
+		userPreferencesSlice,
+		userPreferencesSliceActions,
+
+		houseName,
+		setHouse,
+	} = useStore(
+		(store) => ({
+			userPreferencesSlice: store.userPreferences.state,
+			userPreferencesSliceActions: store.userPreferences.actions,
+
+			houseName: store.generatePassportPage.state.house,
+			setHouse: store.generatePassportPage.actions.setHouse,
+		}),
+		shallow,
+	);
+
+	const { undo, redo } = useStore();
+
 	return (
 		<Box>
 			<Heading>Wizard Passport</Heading>
@@ -20,6 +41,42 @@ export default function HomePage() {
 					toast.error('ERROR');
 				}}>
 				FIRE
+			</Button>
+
+			<Text>COLOR MODE {userPreferencesSlice.colorMode}</Text>
+			<Button
+				onClick={() => {
+					const colorMode =
+						userPreferencesSlice.colorMode === 'light' ? 'dark' : 'light';
+
+					userPreferencesSliceActions.setColorMode(colorMode);
+				}}>
+				TOGGLE COLOR MODE
+			</Button>
+
+			<Text>HOUSE {houseName}</Text>
+			<Button
+				onClick={() => {
+					setHouse('Hogwarts');
+				}}>
+				XXX
+			</Button>
+
+			<Button
+				onClick={() => {
+					if (undo !== undefined) {
+						undo();
+					}
+				}}>
+				UNDO
+			</Button>
+			<Button
+				onClick={() => {
+					if (redo !== undefined) {
+						redo();
+					}
+				}}>
+				REDO
 			</Button>
 		</Box>
 	);

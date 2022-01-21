@@ -24,8 +24,6 @@ module.exports = {
 		},
 	},
 
-	overrides: [],
-
 	globals: {
 		log: 'writable', // This is the "logger" defined in "utilities/logger.js"
 	},
@@ -123,4 +121,24 @@ module.exports = {
 		'sort-vars': ['warn'],
 		'json/*': ['error', { allowComments: true }], // Ability to lint JSON. (NOT Reliable)
 	},
+
+	// Rule overrides for specific file sets.
+	overrides: [
+		{
+			// Files related to "Zustand Global State",
+			files: ['./src/globalStore/slices/**/*.+(js|jsx|ts|tsx)'],
+			rules: {
+				// Disabling "Function Argument Not Being Used Error".
+				// Because we use some pattern in zustand related functions and their arguments only used sometimes. So, To avoid showing 'No UnUsed Vars" in each one of them, We disable it in here.
+				'no-unused-vars': ['error', { args: 'none' }],
+				'@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+
+				// We use "immer" with Zustand. So direct manipulation of values is OK.
+				'no-param-reassign': [
+					'error',
+					{ props: true, ignorePropertyModificationsFor: ['store'] },
+				],
+			},
+		},
+	],
 };
