@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import axios from 'axios';
+import { useQuery } from 'react-query';
 import shallow from 'zustand/shallow';
 
 import { toast } from '../../components/toasters/Toaster/Toaster';
@@ -25,6 +27,17 @@ export default function HomePage() {
 	);
 
 	const { undo, redo } = useStore();
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+	const result = useQuery(
+		'houses',
+		async () => {
+			return axios.get(
+				`http://hp-api.herokuapp.com/api/characters/house/slytherin`,
+			);
+		},
+		{ useErrorBoundary: true },
+	);
 
 	return (
 		<Box>

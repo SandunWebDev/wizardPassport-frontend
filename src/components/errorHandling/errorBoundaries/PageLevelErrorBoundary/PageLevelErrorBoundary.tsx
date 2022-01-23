@@ -39,7 +39,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 
 const myErrorHandler = (error: Error, info: { componentStack: string }) => {
 	// Do something with the error. (	Ex: Log to an error logging client.)
-	log.error('ERROR CACHED IN ERROR BOUNDARY : \n', error.message, info);
+	log.error('ERROR CATCH IN ERROR BOUNDARY : \n', error.message, info);
 };
 
 type MainErrorBoundaryProps = {

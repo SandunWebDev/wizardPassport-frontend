@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import React from 'react';
 
 import {
@@ -8,6 +9,12 @@ import {
 import { ReactLocation, Router } from 'react-location';
 import { parseSearch, stringifySearch } from 'react-location-jsurl';
 import { rankRoutes } from 'react-location-rank-routes';
+import {
+	QueryClient,
+	QueryClientProvider,
+	QueryCache,
+	setLogger,
+} from 'react-query';
 
 import ErrorPage500ForReactLocation from '../../../components/errorHandling/customErrorStatusPages/ErrorPage500ForReactLocation';
 import PageLevelErrorBoundary from '../../../components/errorHandling/errorBoundaries/PageLevelErrorBoundary/PageLevelErrorBoundary';
@@ -15,6 +22,7 @@ import { ConfiguredReactHotToasterProvider } from '../../../components/toasters/
 import chakraCustomTheme from '../../../configs/chakraThemeConfig';
 import { mainRoutes } from '../../../routes/mainRoutes';
 import { routerHistory } from '../../../routes/routerHistory';
+import log from '../../../utilities/logger';
 import PageLoader from '../../customStatusPages/PageLoader';
 import App from '../App/App';
 
@@ -26,6 +34,34 @@ const reactLocation = new ReactLocation({
 	// Plugins
 	parseSearch, // See "https://react-location.tanstack.com/tools/jsurl"
 	stringifySearch,
+});
+
+const queryClient = new QueryClient({
+	queryCache: new QueryCache({
+		// Kind of Global Level Error Handler. This is called, Whether error is handled at another level or error boundary or not.
+		onError: (error: unknown, query) => {
+			// SIDE-NOTE : For example, With providing custom data with 'meta' property in each query we can do some custom toast error messages in here.
+			//             For now, Just logging it out.
+			//             See "https://tkdodo.eu/blog/react-query-error-handling" for more info.
+
+			console.log('GLOBAL QUERY CACHE ERROR:', error, query);
+		},
+	}),
+	defaultOptions: {
+		queries: {
+			// DEFAULT QUERY OPTIONS GOES HERE (For useQuery Hook)
+		},
+		mutations: {
+			// DEFAULT MUTATION OPTIONS GOES HERE (For useMutation Hook)
+		},
+	},
+});
+
+// Setting up, Our custom logger functions for ReactQuery related logs.
+setLogger({
+	log: log.info,
+	warn: log.warn,
+	error: log.error,
 });
 
 function Root() {
@@ -56,7 +92,9 @@ function Root() {
 					defaultPendingMinMs={500} // If it's shown, ensure the pending element is rendered for at least 500ms (Mostly to avoid flickers, when resolved very quickly)
 					defaultErrorElement={<ErrorPage500ForReactLocation />}>
 					<PageLevelErrorBoundary>
-						<App />
+						<QueryClientProvider client={queryClient}>
+							<App />
+						</QueryClientProvider>
 					</PageLevelErrorBoundary>
 				</Router>
 			</ChakraProvider>
