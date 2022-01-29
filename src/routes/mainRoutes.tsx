@@ -5,6 +5,7 @@ import { DefaultGenerics, Navigate, Route } from 'react-location';
 import wait from 'waait';
 
 import ErrorPage404 from '../components/errorHandling/customErrorStatusPages/ErrorPage404';
+import PageTemplate from '../components/pageTemplates/PageTemplate/PageTemplate';
 import globalValues from '../configs/globalValues';
 import DevOnlyPage from '../pages/DevOnlyPage/DevOnlyPage';
 import HomePage from '../pages/HomePage/HomePage';
@@ -23,7 +24,11 @@ const mainRoutes: Route<DefaultGenerics>[] = [
 		children: [
 			{
 				path: '/',
-				element: <div>Passport Generator</div>,
+				element: (
+					<PageTemplate type='default'>
+						<div>Passport Generator</div>
+					</PageTemplate>
+				),
 			},
 			{
 				path: '*',

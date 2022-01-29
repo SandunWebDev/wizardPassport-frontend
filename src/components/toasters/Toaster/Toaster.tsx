@@ -16,6 +16,8 @@ import {
 	Toast,
 } from 'react-hot-toast';
 
+import { customStyleValues } from '../../../configs/chakraThemeConfig';
+
 /**
   NOTE : As of now, By default "react-hot-toast" only support "success" and "error" styled toasts.
          But since we need more options like "info/warn/..." styled toast too, In here we have manually extended things to support those versions and support custom toast output. (Ex. Using ChakraUI Alerts)
@@ -34,6 +36,12 @@ export function ConfiguredReactHotToasterProvider(props: ToasterProps) {
 			reverseOrder // New toast should be added to end.
 			toastOptions={{
 				position: 'top-right',
+			}}
+			containerStyle={{
+				// Manually offsetting Toast Container to show toast below the Header.
+				position: 'fixed',
+				top: `${customStyleValues.header.height + 20}px`, // Header(70px) + Margin(20px)
+				right: '15px',
 			}}
 			{...props}
 		/>

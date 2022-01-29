@@ -15,7 +15,8 @@ const config = {
 
 // Setting up custom breakpoints. (See https://chakra-ui.com/docs/features/responsive-styles)
 const breakpoints = createBreakpoints({
-	sm: '320px',
+	xs: '320px',
+	sm: '420px',
 	md: '768px',
 	lg: '960px',
 	xl: '1200px',
@@ -35,6 +36,10 @@ const globalStyles = {
 			boxShadow: 'none !important',
 			outline: '0 solid  !important',
 		},
+
+		'a:hover': {
+			color: '#FF7264', // Color also defined in "colors.links.hover"
+		},
 	}),
 };
 
@@ -46,6 +51,13 @@ const customLayerStylesPacks = {
 		bg: 'gray.50',
 		border: '2px solid',
 		borderColor: 'gray.500',
+	},
+
+	// Use this style to wrap page contain into "1358px" wide container. So in large resolutions it not look ugly.
+	pageContainer: {
+		maxWidth: '1358px',
+		margin: '0 auto',
+		padding: '0 20px',
 	},
 };
 
@@ -77,18 +89,32 @@ const customTextStylesPacks = {
 const extendThemeStyles = {
 	colors: {
 		// Overriding Defaults
-		black: '#130a0a',
+		black: '#242633',
 
-		// Custom
-		// Example Usage  <Box bg="myBrand.blue.light">Welcome</Box>
-		myBrand: {
-			blue: { light: '#2475C0', dark: 'white' },
-			pageBackground: { light: '#073b4c', dark: '#1A202C' },
-			containerBackground: { light: '#F8F8F8', dark: '#4A5568' },
-			modalBackground: {
-				light: 'rgba(0, 0, 0, 0.85)',
-				dark: 'rgba(0, 0, 0, 0.85)',
+		// Custom (Can use any key Names)
+		// Example Usage  <Box bg="brand.blue.light">Welcome</Box>
+		brand: {
+			background: {
+				primary: '#242633',
 			},
+
+			text: {
+				primary: 'white',
+
+				heading1: '#68D391', // green.300
+				heading2: '#4FD1C5', // teal.300
+			},
+
+			links: {
+				normal: 'lightblue',
+				hover: '#FF7264', // Check above "globalStyles" section too.
+			},
+
+			primary: '#242633', // Blackish Color
+			primaryAlternative: 'teal',
+			secondaryAlternative: 'teal',
+
+			buttons: 'teal.500',
 		},
 	},
 
@@ -97,15 +123,26 @@ const extendThemeStyles = {
 		body: 'Saira Condensed, system-ui, sans-serif',
 		heading: 'Fugaz One, Georgia, display, sans-serif',
 
-		// Custom
+		// Custom (Can use any key Names)
 		fancy: 'Comforter Brush, sans-serif',
 	},
 };
 
 // My Own Custom Values (Just for convince.)
-export const myCustomValues = {
-	navBar: {
-		height: 60, // px
+// To use these just directly import "customStyleValues" or "chakraCustomTheme" and reference them.
+// Ex. customStyleValues.header.height OR chakraCustomTheme.customStyleValues.header.height
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+export const customStyleValues = {
+	header: {
+		height: 70, // px
+	},
+
+	buttons: {
+		primary: {
+			colorScheme: 'teal',
+			fontSize: 'md',
+		},
 	},
 };
 
@@ -115,7 +152,10 @@ const chakraCustomTheme = extendTheme({
 	styles: globalStyles,
 	layerStyles: customLayerStylesPacks,
 	textStyles: customTextStylesPacks,
-	my: myCustomValues,
+
+	// Custom (Can use any key Names)
+	customStyleValues,
+
 	...extendThemeStyles,
 });
 
