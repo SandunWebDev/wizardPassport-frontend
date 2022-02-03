@@ -5,10 +5,11 @@ import { DefaultGenerics, Navigate, Route } from 'react-location';
 import wait from 'waait';
 
 import ErrorPage404 from '../components/errorHandling/customErrorStatusPages/ErrorPage404';
-import PageTemplate from '../components/pageTemplates/PageTemplate/PageTemplate';
 import globalValues from '../configs/globalValues';
 import DevOnlyPage from '../pages/DevOnlyPage/DevOnlyPage';
+import GeneratePassportPage from '../pages/GeneratePassportPage/GeneratePassportPage';
 import HomePage from '../pages/HomePage/HomePage';
+import MyPassportPage from '../pages/MyPassportPage/MyPassportPage';
 
 const isDevelopment = globalValues.environment.IS_DEVELOPMENT;
 
@@ -24,11 +25,7 @@ const mainRoutes: Route<DefaultGenerics>[] = [
 		children: [
 			{
 				path: '/',
-				element: (
-					<PageTemplate type='default'>
-						<div>Passport Generator</div>
-					</PageTemplate>
-				),
+				element: <GeneratePassportPage />,
 			},
 			{
 				path: '*',
@@ -42,7 +39,7 @@ const mainRoutes: Route<DefaultGenerics>[] = [
 		children: [
 			{
 				path: '/',
-				element: <div>My Passport</div>,
+				element: <MyPassportPage />,
 			},
 			{
 				path: '*',

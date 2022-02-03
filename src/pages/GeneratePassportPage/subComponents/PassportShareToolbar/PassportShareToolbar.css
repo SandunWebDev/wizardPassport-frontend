@@ -1,0 +1,44 @@
+/* ******************** Styles Related To  <ToolbarVerticalDrawerMenuVersion/> Component ******************** */
+
+/* Menu Group Title */
+.ToolbarVerticalDrawerMenuVersion__Menu .menuGroupTitle {
+	background: var(--ck-colors-brand-text-primary);
+	border-radius: 0 50px 50px 0;
+	color: var(--ck-colors-brand-background-primary);
+	font-size: 16px;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+/* Menu Group Items Wrapper */
+.ToolbarVerticalDrawerMenuVersion__Menu .menuGroupSubItemsWrapper {
+	margin-bottom: 25px;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+/* Each Clickable MenuItem */
+.ToolbarVerticalDrawerMenuVersion__Menu .menuItem {
+	cursor: pointer;
+	font-weight: bold;
+	padding: 10px;
+}
+
+/* Each Clickable MenuItem on Hover */
+.ToolbarVerticalDrawerMenuVersion__Menu .menuItem:hover {
+	background: none;
+	color: var(--ck-colors-brand-links-hover);
+}
+
+/* Making anchor links in MenuItem take full width. So any where clicked it's invoked. */
+.ToolbarVerticalDrawerMenuVersion__Menu .menuItem a {
+	display: block;
+	width: 100%;
+}
+
+/* ******************** Styles Related To  <ToolbarHorizontalMenuVersion/> Component ******************** */
+
+/* stylelint-disable-next-line no-descending-specificity */
+.ToolbarHorizontalMenuVersion a:hover {
+	color: inherit;
+}

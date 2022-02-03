@@ -61,7 +61,7 @@ type FullPageTemplateProps = CommonPageTemplateProps &
  */
 
 export default function PageTemplate(props: FullPageTemplateProps) {
-	const { type = 'default', templateProps, children } = props;
+	const { type = 'default', templateProps = {}, children } = props;
 
 	switch (type) {
 		case 'base': {

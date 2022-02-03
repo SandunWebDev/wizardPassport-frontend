@@ -84,7 +84,7 @@ const customTextStylesPacks = {
  *
  * SIDENOTE :
  *  - Values defined in here can be accessed as CSS Variables in ".CSS" files too, if needed. (See https://chakra-ui.com/docs/features/css-variables)
- *      Ex.  var(--chakra-colors-myBrand-900);
+ *      Ex.  var(--ck-colors-myBrand-900);
  */
 const extendThemeStyles = {
 	colors: {
@@ -111,8 +111,9 @@ const extendThemeStyles = {
 			},
 
 			primary: '#242633', // Blackish Color
-			primaryAlternative: 'teal',
-			secondaryAlternative: 'teal',
+			secondry: 'white',
+			primaryAlternative: '#68D391', // green.300
+			secondaryAlternative: '#4FD1C5', // teal.300
 
 			buttons: 'teal.500',
 		},

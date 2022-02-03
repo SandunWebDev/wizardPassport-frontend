@@ -6,7 +6,7 @@
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#242633" />
-  <meta name="description" content="Get Your Wizard Passport Here For Potter Universe" />
+  <meta name="description" content="Your Wizard Passport For Potter Universe" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -21,6 +21,22 @@
   <meta name="apple-mobile-web-app-title" content="Wizard Password - Potter Universe">
   <meta name="application-name" content="Wizard Password - Potter Universe">
   <meta name="msapplication-TileColor" content="#242633">
+
+  <!-- Facebook Share Meta Data -->
+  <meta property='og:url' content='%REACT_APP_FRONTEND_BASEURL%' />
+  <meta property='og:type' content='website' />
+  <meta property='og:title' content='Wizard Password - Potter Universe' />
+  <meta property='og:description' content='My Wizard Passport For Potter Universe' />
+  <meta property='og:image' content='%PUBLIC_URL%/socialmedia-post-banner.png' />
+  <meta property="og:site_name" content="Wizard Password" />
+
+  <!-- Twitter Share Meta Data -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wizard Password - Potter Universe" />
+  <meta name="twitter:description" content="My Wizard Passport For Potter Universe" />
+  <meta name="twitter:site" content="%REACT_APP_FRONTEND_BASEURL%" />
+  <meta name="twitter:image:src" content="%REACT_APP_FRONTEND_BASEURL%/socialmedia-post-banner.png" />
+
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -35,6 +51,13 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0"
+    nonce="cvhP14kd">
+    </script>
+
   <div id="root"></div>
   <!--
       This HTML file is a template.

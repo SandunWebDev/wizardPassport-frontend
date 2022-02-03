@@ -4,15 +4,22 @@ import { GeneratePassportPageSlice } from './generatePassportPageSliceTypes';
 
 export const sliceName = 'generatePassportPage';
 
-const defaultSliceState = { house: '' };
+const defaultSliceState = { inputtedPassportFormData: null };
 
 const getSliceActions: StoreSlice<
 	GeneratePassportPageSlice['generatePassportPage']['actions']
 > = (set, get) => {
 	return {
-		setHouse: (house) => {
+		setInputtedPassportFormData: (passportData) => {
 			set((store: StoreState) => {
-				store.generatePassportPage.state.house = house;
+				store.generatePassportPage.state.inputtedPassportFormData =
+					passportData;
+			});
+		},
+
+		clearInputtedPassportFormData: () => {
+			set((store: StoreState) => {
+				store.generatePassportPage.state.inputtedPassportFormData = null;
 			});
 		},
 	};
