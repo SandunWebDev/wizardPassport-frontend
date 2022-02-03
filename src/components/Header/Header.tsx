@@ -72,7 +72,7 @@ export default function Header() {
 		<Box
 			position='sticky'
 			top={0}
-			zIndex='1001'
+			zIndex='2000'
 			width='100%'
 			bg='brand.background.primary'
 			color='brand.text.primary'

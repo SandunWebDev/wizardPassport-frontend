@@ -45,6 +45,24 @@ import {
 
 import './PassportShareToolbar.css';
 
+// Helper function to programmatically click "Chakra Popup's Close Button".
+// This is used as temporary hackish solution to close popup when certain things happen. (Ex. Close MarkdownCode Popup when "Copy" button is clicked.)
+function clickOnChakraPopupCloseButton() {
+	try {
+		const allCloseButtons = document.querySelectorAll(
+			'.chakra-popover__close-btn',
+		);
+
+		// eslint-disable-next-line unicorn/prefer-spread, unicorn/no-array-for-each
+		Array.from(allCloseButtons).forEach((closeButton) => {
+			const elem = closeButton as HTMLElement;
+			elem.click();
+		});
+
+		// eslint-disable-next-line no-empty
+	} catch {}
+}
+
 type TToolbarVerticalDrawerMenuVersionSpecificProps = {
 	toggler?: string | React.ReactNode; // New Toggler
 	togglerProps?: ButtonProps; // Props for Existing Toggler
@@ -184,7 +202,10 @@ function ToolbarVerticalDrawerMenuVersion(
 								<Box className='menuItem'>
 									<CopyToClipboard
 										text={getIFrameCodeAsString(passportData)}
-										onCopy={() => toast.info('IFrame Code Copied.')}>
+										onCopy={() => {
+											toast.info('IFrame Code Copied.');
+											clickOnChakraPopupCloseButton();
+										}}>
 										<Box>IFRAME</Box>
 									</CopyToClipboard>
 								</Box>
@@ -192,7 +213,10 @@ function ToolbarVerticalDrawerMenuVersion(
 								<Box className='menuItem'>
 									<CopyToClipboard
 										text={getMarkdownCodeAsString(passportData)}
-										onCopy={() => toast.info('Markdown Code Copied.')}>
+										onCopy={() => {
+											toast.info('Markdown Code Copied.');
+											clickOnChakraPopupCloseButton();
+										}}>
 										<Box>MARKDOWN</Box>
 									</CopyToClipboard>
 								</Box>
@@ -370,7 +394,10 @@ function ToolbarHorizontalMenuVersion(
 
 								<CopyToClipboard
 									text={getIFrameCodeAsString(passportData)}
-									onCopy={() => toast.info('IFrame Code Copied.')}>
+									onCopy={() => {
+										toast.info('IFrame Code Copied.');
+										clickOnChakraPopupCloseButton();
+									}}>
 									<Button
 										width='100%'
 										marginTop='10px'
@@ -400,7 +427,10 @@ function ToolbarHorizontalMenuVersion(
 
 								<CopyToClipboard
 									text={getMarkdownCodeAsString(passportData)}
-									onCopy={() => toast.info('Markdown Code Copied.')}>
+									onCopy={() => {
+										toast.info('Markdown Code Copied.');
+										clickOnChakraPopupCloseButton();
+									}}>
 									<Button
 										width='100%'
 										marginTop='10px'
@@ -526,7 +556,7 @@ export default function PassportShareToolbar(
 	const { type = 'verticalDrawer' } = props;
 
 	return (
-		<Box>
+		<Box className='PassportShareToolbar'>
 			{/* Mostly suitable for Mobile Resolutions. */}
 			{type === 'verticalDrawer' && (
 				<ToolbarVerticalDrawerMenuVersion {...props} />

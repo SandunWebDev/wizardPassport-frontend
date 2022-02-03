@@ -50,7 +50,7 @@ export default function GeneratePassportPage() {
 
 			<Box
 				layerStyle='pageContainer'
-				zIndex={100}
+				zIndex={1001} // Mostly to Popup Don't get Clipped from Footer.
 				display='flex'
 				alignItems='center'
 				justifyContent='center'
