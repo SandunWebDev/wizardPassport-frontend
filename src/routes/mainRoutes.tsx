@@ -6,9 +6,11 @@ import wait from 'waait';
 
 import ErrorPage404 from '../components/errorHandling/customErrorStatusPages/ErrorPage404';
 import globalValues from '../configs/globalValues';
+import AboutPage from '../pages/AboutPage/AboutPage';
 import DevOnlyPage from '../pages/DevOnlyPage/DevOnlyPage';
 import GeneratePassportPage from '../pages/GeneratePassportPage/GeneratePassportPage';
 import HomePage from '../pages/HomePage/HomePage';
+import KnowledgeHubPage from '../pages/KnowledgeHubPage/KnowledgeHubPage';
 import MyPassportPage from '../pages/MyPassportPage/MyPassportPage';
 
 const isDevelopment = globalValues.environment.IS_DEVELOPMENT;
@@ -53,7 +55,7 @@ const mainRoutes: Route<DefaultGenerics>[] = [
 		children: [
 			{
 				path: '/',
-				element: <div>Knowledge Hub</div>,
+				element: <KnowledgeHubPage />,
 			},
 			{
 				path: '/character',
@@ -84,7 +86,7 @@ const mainRoutes: Route<DefaultGenerics>[] = [
 		children: [
 			{
 				path: '/',
-				element: <div>About</div>,
+				element: <AboutPage />,
 			},
 			{
 				path: '*',

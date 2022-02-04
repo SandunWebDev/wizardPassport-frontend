@@ -162,11 +162,8 @@ export const patronusTypes = [
 
 export const bloodStatusTypes = [
 	'Muggle Born',
-	'Half Blood',
 	'Pure Blood',
+	'Half Blood',
+	'Half-Breed',
 	'Squib',
-	'Half-Blood',
-	'Muggle-Born',
-	'Pure-Blood',
-	'Squib-Born',
 ];

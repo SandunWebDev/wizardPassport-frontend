@@ -35,7 +35,7 @@ const Passport = React.forwardRef<
 				`}
 			</style>
 
-			<g id='WizzardPassport'>
+			<g id='WizardPassport'>
 				<rect id='PlainBackground' width='300' height='175' fill='#161134' />
 				<g id='Header'>
 					<text

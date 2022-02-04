@@ -134,7 +134,7 @@ export default function Header() {
 										marginInlineStart='-0.5rem !important'
 										sx={{
 											'svg path': {
-												fill: 'white',
+												fill: 'white !important',
 											},
 										}}>
 										<MainLogoSvg
