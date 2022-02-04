@@ -87,9 +87,9 @@ function BaseToastMessageRender(props: BaseToastMessageRenderProps) {
 			</Box>
 
 			<CloseButton
-				position='absolute'
-				right='8px'
-				top='8px'
+				size='sm'
+				marginTop='-1px'
+				marginLeft='10px'
 				onClick={() => reactHotToast.dismiss(t.id)}
 			/>
 		</Alert>
