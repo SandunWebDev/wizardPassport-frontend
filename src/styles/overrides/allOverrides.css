@@ -1,1 +1,3 @@
 /* For any override create a .css file in this folder and import it below. (Ex. import 'abc.css') */
+
+@import './simplebarReact.css';

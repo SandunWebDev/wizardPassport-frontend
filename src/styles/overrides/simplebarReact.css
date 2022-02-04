@@ -1,0 +1,51 @@
+/* CSS Overrides for "simplebar-react" Component
+    - Simply defining how scrollbar should be look like.
+		- Refer '~simplebar/dist/simplebar.css' file for initial styles.
+*/
+
+:root {
+	/* stylelint-disable-next-line custom-property-pattern */
+	--scrollbarSize: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+	:root {
+		/* stylelint-disable-next-line custom-property-pattern */
+		--scrollbarSize: 10px;
+	}
+}
+
+/* Full ScrollBar (Either Horizontal Or Vertical) */
+.simplebar-track {
+	background-color: none;
+}
+
+/* Full ScrollBar - Moving part of ScrollBar. (Either Horizontal Or Vertical) */
+.simplebar-scrollbar {
+	top: -2px;
+}
+
+.simplebar-scrollbar::before {
+	background-color: white;
+	border-radius: 0;
+}
+
+/* Vertical Full ScrollBar */
+.simplebar-track.simplebar-vertical {
+	width: var(--scrollbarSize);
+}
+
+/* Vertical ScrollBar - Moving part of ScrollBar. */
+.simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+	width: var(--scrollbarSize);
+}
+
+/* Horizontal Full ScrollBar */
+.simplebar-track.simplebar-horizontal {
+	height: var(--scrollbarSize);
+}
+
+/* Horizontal ScrollBar - Moving part of ScrollBar. */
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar::before {
+	height: var(--scrollbarSize);
+}
