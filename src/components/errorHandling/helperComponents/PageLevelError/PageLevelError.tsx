@@ -20,6 +20,8 @@ import {
 	AccordionPanel,
 } from '@chakra-ui/react';
 import Draggable from 'react-draggable';
+import { AiFillHome as AiFillHomeIcon } from 'react-icons/ai';
+import { IoMdArrowRoundBack as IoMdArrowRoundBackIcon } from 'react-icons/io';
 import { useNavigate } from 'react-location';
 
 import errorPage500IllustrationPath from '../../../../assets/images/errorPage500_Illustration.svg';
@@ -55,9 +57,11 @@ function DevelopmentErrorViewer({
 				pos='absolute'
 				bottom='5'
 				right='5'
-				zIndex='1000'
+				zIndex='5000'
 				bg='black'
-				width='500px'>
+				width='500px'
+				color='white'
+				border='1px solid'>
 				<Alert
 					bg='gray.600'
 					status='error'
@@ -135,29 +139,36 @@ export default function PageLevelError(props: PageLevelErrorProps) {
 
 	return (
 		<PageTemplate type={pageTemplateType}>
-			<Center flex='1'>
+			<Center flex='1' margin='60px 0' pos='relative'>
 				<VStack>
-					<Heading as='h1' fontSize='10rem' marginBottom='-30px'>
+					<Heading as='h1' fontSize='10rem' marginBottom='-30px' color='white'>
 						{statusCode}
 					</Heading>
 
-					<Heading as='h3' size='md'>
+					<Heading as='h3' size='md' color='white'>
 						{title}
 					</Heading>
 
-					{subTitle && <Text fontSize='xl'>{subTitle}</Text>}
+					{subTitle && (
+						<Text fontSize='xl' color='white'>
+							{subTitle}
+						</Text>
+					)}
 
 					<DevelopmentErrorViewer
 						error={error}
 						additionalErrorDetails={additionalErrorDetails}
 					/>
 
-					<Image src={imageSrc} maxWidth='500px' />
+					<Image src={imageSrc} maxWidth='500px' width='100%' />
 
 					<ButtonGroup>
 						{customButtonsList || (
 							<>
 								<Button
+									leftIcon={
+										<IoMdArrowRoundBackIcon style={{ marginTop: '-1px' }} />
+									}
 									onClick={() => {
 										routerHistory.back();
 									}}>
@@ -165,6 +176,7 @@ export default function PageLevelError(props: PageLevelErrorProps) {
 								</Button>
 
 								<Button
+									leftIcon={<AiFillHomeIcon style={{ marginTop: '-1px' }} />}
 									onClick={() => {
 										navigate({ to: '/' });
 									}}>

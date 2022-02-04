@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Box, Button, Select } from '@chakra-ui/react';
+import { Box, Button, Select, Text } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { AiOutlineHeatMap as AiOutlineHeatMapIcon } from 'react-icons/ai';
@@ -140,9 +140,11 @@ export default function PassportQuestionsForm(
 							size='lg'
 							colorScheme='teal'
 							marginLeft='auto'>
-							GENERATE
+							Generate
 						</Button>
 					</Box>
+
+					<Text>NOTE: Lot more options are coming soon.</Text>
 				</form>
 			</FormProvider>
 		</Box>

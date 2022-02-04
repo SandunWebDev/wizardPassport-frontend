@@ -1,20 +1,12 @@
 import React, { useRef, useState } from 'react';
 
 import { HamburgerIcon } from '@chakra-ui/icons';
-import {
-	Alert,
-	AlertDescription,
-	AlertIcon,
-	AlertTitle,
-	Box,
-	Button,
-	Center,
-	IconButton,
-} from '@chakra-ui/react';
-import { Link, useMatch } from 'react-location';
+import { Box, IconButton } from '@chakra-ui/react';
+import { useMatch } from 'react-location';
 
 import backgroundOverlay_NightForestImgLink from '../../assets/images/backgroundOverlay_NightForest.svg';
 import { passportDataSchema, TPassportData } from '../../commonTypes/passport';
+import ErrorPage500 from '../../components/errorHandling/customErrorStatusPages/ErrorPage500';
 import PageTemplate from '../../components/pageTemplates/PageTemplate/PageTemplate';
 import Passport from '../../components/Passport/Passport';
 import { customStyleValues } from '../../configs/chakraThemeConfig';
@@ -133,6 +125,7 @@ function MyPassportPageIFrameView(props: TMyPassportPageCommonProps) {
 						passportElem={passportElem}
 						passportData={passportData}
 						verticalDrawerTypeProps={{
+							showNewButton: true, // This show additional button on opened menu. Which new users can used to create new Wizard Passport.
 							toggler: (
 								<IconButton
 									title='Menu'
@@ -176,47 +169,7 @@ export default function MyPassportPage() {
 	}
 
 	if (isError) {
-		return (
-			<Center minHeight='100vh'>
-				<Alert
-					status='error'
-					variant='subtle'
-					flexDirection='column'
-					alignItems='center'
-					justifyContent='center'
-					textAlign='center'
-					height='200px'
-					background='none'>
-					<AlertIcon boxSize='40px' mr={0} />
-					<AlertTitle mt={4} mb={1} fontSize='lg'>
-						Error Occurred
-					</AlertTitle>
-					<AlertDescription maxWidth='sm'>
-						<Box>{isError}</Box>
-
-						<Box
-							marginTop='10px'
-							display='flex'
-							alignItems='center'
-							justifyContent='center'>
-							<Button
-								colorScheme='teal'
-								onClick={() => {
-									window.location.reload();
-								}}>
-								REFRESH PAGE
-							</Button>
-
-							<Box marginLeft='10px'>
-								<Link to='/'>
-									<Button colorScheme='blue'>HOME PAGE</Button>
-								</Link>
-							</Box>
-						</Box>
-					</AlertDescription>
-				</Alert>
-			</Center>
-		);
+		return <ErrorPage500 title='Invalid Passport Data' subTitle={isError} />;
 	}
 
 	if (decodedPassportData !== null) {

@@ -35,7 +35,7 @@ export const headerLinks = [
 	{ path: '/', title: 'Home' },
 	{ path: '/knowledge-hub', title: 'Knowledge Hub' },
 	{ path: '/about', title: 'About' },
-	{ path: '/generate-passport', title: 'Get Passport' },
+	{ path: '/generate-passport/new', title: 'Get Passport' },
 ];
 
 export default function Header() {

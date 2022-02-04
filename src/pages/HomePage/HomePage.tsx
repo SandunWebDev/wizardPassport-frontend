@@ -67,7 +67,7 @@ export default function HomePage() {
 									passport to visit Wizarding World as tourist.
 								</Text>
 
-								<Link to='/generate-passport'>
+								<Link to='/generate-passport/new'>
 									<Button
 										size='lg'
 										rightIcon={<AddIcon />}

@@ -30,6 +30,11 @@ const mainRoutes: Route<DefaultGenerics>[] = [
 				element: <GeneratePassportPage />,
 			},
 			{
+				path: '/new',
+				// This give us way to refresh "/generate-passport" page, When user is already on that page.
+				element: <Navigate to='/generate-passport' />,
+			},
+			{
 				path: '*',
 				element: <ErrorPage404 />,
 			},

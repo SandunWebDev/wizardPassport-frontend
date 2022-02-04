@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box, Divider, Heading, Icon, Text } from '@chakra-ui/react';
+import { Box, Divider, Heading, Icon, Text, HStack } from '@chakra-ui/react';
 import { FaWpforms as FaWpformsIcon } from 'react-icons/fa';
 
 import backgroundOverlay_NightForestImgLink from '../../assets/images/backgroundOverlay_NightForest.svg';
@@ -62,7 +62,11 @@ export default function GeneratePassportPage() {
 					background='rgba(255, 255, 255 ,0.7)'
 					width={{ base: '100%', md: '700px' }}
 					borderRadius='5px'>
-					<Heading fontSize='2xl' letterSpacing='.7px' color='teal.600'>
+					<Heading
+						fontSize='2xl'
+						fontWeight='500'
+						letterSpacing='.7px'
+						color='teal.600'>
 						Let&apos;s Get Your Wizard Passport{' '}
 					</Heading>
 
@@ -83,12 +87,13 @@ export default function GeneratePassportPage() {
 								</Box>
 							</Box>
 
-							<Text margin='0 15px' whiteSpace='nowrap'>
-								<Text display='inline' fontWeight='bold' fontSize='lg'>
+							<HStack margin='0 15px' whiteSpace='nowrap'>
+								<Text fontWeight='bold' fontSize='lg'>
 									STEP {currentStepData.id + 1} :
-								</Text>{' '}
-								{currentStepData.title}
-							</Text>
+								</Text>
+
+								<Text>{currentStepData.title}</Text>
+							</HStack>
 
 							<Divider bg='gray.500' height='2px' top='50%' />
 						</Box>

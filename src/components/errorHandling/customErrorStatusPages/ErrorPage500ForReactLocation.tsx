@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Button } from '@chakra-ui/react';
+import { AiFillHome as AiFillHomeIcon } from 'react-icons/ai';
+import { IoMdRefresh as IoMdRefreshIcon } from 'react-icons/io';
 import { useMatch, useNavigate } from 'react-location';
 
 import { routerHistory } from '../../../routes/routerHistory';
@@ -28,6 +30,7 @@ export default function ErrorPage500ForReactLocation() {
 					</Button>
 
 					<Button
+						leftIcon={<IoMdRefreshIcon style={{ marginTop: '-1px' }} />}
 						onClick={() => {
 							routerHistory.back();
 						}}>
@@ -35,6 +38,7 @@ export default function ErrorPage500ForReactLocation() {
 					</Button>
 
 					<Button
+						leftIcon={<AiFillHomeIcon style={{ marginTop: '-1px' }} />}
 						onClick={() => {
 							navigate({ to: '/' });
 						}}>

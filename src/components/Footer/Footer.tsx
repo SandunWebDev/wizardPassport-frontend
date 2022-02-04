@@ -117,14 +117,12 @@ export default function Footer() {
 								CREATED BY
 							</Heading>
 
-							<VStack align='left'>
-								<Text>
-									Powerful Wizard{' '}
-									<Text display='inline' fontWeight='bold'>
-										<a href='mailto:SandunWebDev@gmail.com'>SandunWebDev</a>
-									</Text>
+							<HStack align='left'>
+								<Text>Powerful Wizard </Text>
+								<Text fontWeight='bold'>
+									<a href='mailto:SandunWebDev@gmail.com'>SandunWebDev</a>
 								</Text>
-							</VStack>
+							</HStack>
 
 							<HStack spacing='15px' marginTop='5px'>
 								<a href='mailto:SandunWebDev@gmail.com'>

@@ -3,6 +3,8 @@ import React from 'react';
 import { Button } from '@chakra-ui/react';
 import log from 'loglevel';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
+import { AiFillHome as AiFillHomeIcon } from 'react-icons/ai';
+import { IoMdRefresh as IoMdRefreshIcon } from 'react-icons/io';
 
 import ErrorPage500 from '../../customErrorStatusPages/ErrorPage500';
 
@@ -19,6 +21,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 			customButtonsList={
 				<>
 					<Button
+						leftIcon={<IoMdRefreshIcon style={{ marginTop: '-1px' }} />}
 						onClick={() => {
 							window.location.reload();
 						}}>
@@ -26,10 +29,11 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 					</Button>
 
 					<Button
+						leftIcon={<AiFillHomeIcon style={{ marginTop: '-1px' }} />}
 						onClick={() => {
 							window.location.href = '/';
 						}}>
-						GOTO HOME
+						HOME
 					</Button>
 				</>
 			}

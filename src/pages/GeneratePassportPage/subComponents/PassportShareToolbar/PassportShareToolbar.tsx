@@ -173,7 +173,7 @@ function ToolbarVerticalDrawerMenuVersion(
 										_hover={{ background: 'none !important' }}>
 										<Box>
 											<Text fontSize='sm'>Not Your&apos;s? New?</Text>
-											<Link to='/generate-passport' target='_blank'>
+											<Link to='/generate-passport/new' target='_blank'>
 												<Button rightIcon={<AddIcon />} colorScheme='teal'>
 													Get Your&apos;s Here
 												</Button>
