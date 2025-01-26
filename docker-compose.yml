@@ -1,0 +1,8 @@
+services:
+  wizard_passport:
+    build: .
+    image: wizard_passport
+    container_name: wizard_passport
+    restart: unless-stopped
+    ports:
+      - '80:80'
